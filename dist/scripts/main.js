@@ -22,13 +22,19 @@ Backbone.history.start();
 	$('.form-horizontal').on('submit', function(e) {
 		console.log('user updated');
 		e.preventDefault();
+		
 		user.set({
 			name: $('#name').val(),
 			email: $('#inputEmail3').val(),
 			role: $('#role').val(),
 			password: $('#inputPassword3').val()
 		});
-		console.log(user);
 	});
-	console.log(user);
+
+	user.on('change', function() {
+		$('.name').html(user.get('name'));
+		$('.profile-usertitle-name').html(user.get('name'));
+		$('.profile-usertitle-job').html(user.get('role'));
+
+	})
 });
